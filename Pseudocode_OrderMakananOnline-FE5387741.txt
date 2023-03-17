@@ -1,0 +1,46 @@
+-- Final Project - Proses order makanan/minuman via online --
+
+START
+
+DECLARE "namaPelanggan" with string
+DECLARE "alamatPelanggan" with string
+DECLARE "pesanan" with string
+DECLARE "qty" with number
+DECLARE "harga" with number
+DECLARE "totalBayar" with number
+DECLARE "saldo" with number
+DECLARE "selesaiPesan" with true
+
+WHILE "selesaiPesan" equal false
+    DO
+    INPUT "pesanan"
+    INPUT "qty"
+
+    IF "pesanan" equal "lalapan ayam"
+        SET harga = 10000
+    ELSE IF "pesanan" equal "nasi goreng"
+        SET harga = 12000
+    ELSE IF "pesanan" equal "es jeruk"
+        SET harga = 3000
+    ELSE IF "pesanan" equal "es teh"
+        SET harga = 3000
+    
+    STORE "totalBayar" += "harga" times "qty"
+
+    DECLARE "lanjutBelanja" with boolean
+    INPUT "lanjutBelanja"
+
+    IF "lanjutBelanja" equal "yes"
+        STORE "selesaiPesanan" with false
+    ELSE
+        STORE "selesaiPesanan" with true
+END WHILE
+
+INPUT "saldo"
+IF "saldo" more than or equal  "totalBayar"
+    PRINT "pesanan dibuat"
+    PRINT "Total Belanja: " totalBayar
+ELSE
+    PRINT "saldo kurang. Pesanan gagal"
+
+END
